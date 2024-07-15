@@ -59,3 +59,14 @@ Use tools like Postman to upload CSV files to the API endpoint (/upload).
 ## Configuration
 
 Configure the application using environment variables. Modify the docker-compose.yml file to set database credentials and other configurations as needed.
+
+## Contributing
+
+If you would like to contribute to this project, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a new Pull Request.
+

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    image: ut-app
+    ports:
+      - "5001:5001"
+    restart: always
+    environment:
+      DATABASE_URL: "postgresql://docker:docker@database:5432/exampledb"
+    depends_on:
+      - database
+
+  database:
+    image: postgres:9.3
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: exampledb
+    ports:
+      - "5432:5432"
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database

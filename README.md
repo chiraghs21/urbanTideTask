@@ -32,6 +32,7 @@ Ensure you have the following installed:
 
 - Docker
 - Docker Compose
+- Postman (Any other tool that can make http queries, this app does not have a UI)
 
 ### Installation and Setup
 

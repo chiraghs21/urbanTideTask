@@ -1,7 +1,7 @@
 from flask import request, jsonify
 from app import app
 from app.constants import TABLE_NAME
-from app.utils import detect_outliers, create_table, insert_data
+from app.utils import delete_all_rows_from_table, detect_outliers, create_table, insert_data
 from app.db import engine, metadata
 from sqlalchemy import text
 import pandas as pd
@@ -10,11 +10,18 @@ import pandas as pd
 metadata.reflect(bind=engine)
 
 @app.route('/')
-def test():
-    return "<p>Hello! These are APIs to upload csv files and insert them to SQL.</p>"
+def home():
+    """
+    Home endpoint to test if the API is running.
+    """
+    return "<p>Hello! These are APIs to upload csv files and insert them to SQL, and delete all rows from SQL. Please use Postman to use them.</p>"
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    """
+    Endpoint to upload a CSV file.
+    The file is processed, checked for outliers, and inserted into the database.
+    """
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
 
@@ -35,16 +42,9 @@ def upload_file():
 
 @app.route('/delete_all_rows', methods=['DELETE'])
 def delete_all_rows():
-    try:
-        # Construct SQL query to delete all rows
-        delete_query = text(f'DELETE FROM {TABLE_NAME}')
-
-        # Execute the delete query
-        with engine.connect() as connection:
-            connection.execute(delete_query)
-
-        return jsonify({"message": f"All rows deleted from '{TABLE_NAME}'"}), 200
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    """
+    Endpoint to delete all rows from the specified table.
+    """
+    response, status_code = delete_all_rows_from_table(TABLE_NAME)
+    return jsonify(response), status_code
 

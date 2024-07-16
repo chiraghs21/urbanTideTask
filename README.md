@@ -52,9 +52,9 @@ Ensure you have the following installed:
 This command starts the application in detached mode. Use -d to run containers in the background.
 
 ## Access the application:
-    - Flask app: [http://localhost:5001](http://localhost:5001)
-    - Adminer: [http://localhost:8080](http://localhost:8080)
-    - For detailed API documentation, please refer to the [Postman Collection](https://elements.getpostman.com/redirect?entityId=26372192-ac960f5d-c028-4546-a8a4-e0cfd2d2002c&entityType=collection).
+  - Flask app: [http://localhost:5001](http://localhost:5001)
+  - Adminer: [http://localhost:8080](http://localhost:8080)
+  - For detailed API documentation, please refer to the [Postman Collection](https://elements.getpostman.com/redirect?entityId=26372192-ac960f5d-c028-4546-a8a4-e0cfd2d2002c&entityType=collection).
 
 ## Configuration
 
